@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Hunter - Catch 'Em All!</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div id="landing-page" class="page active">
+            <h1>🤖 AI Hunter</h1>
+            <p>Catch AI LLMs in Augmented Reality!</p>
+            
+            <form id="user-form">
+                <div class="form-group">
+                    <label for="name">Your Name:</label>
+                    <input type="text" id="name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="organization">Organization:</label>
+                    <input type="text" id="organization" required>
+                </div>
+                
+                <button type="submit">Start Hunting!</button>
+            </form>
+        </div>
+
+        <div id="game-page" class="page">
+            <div id="ui-overlay">
+                <div id="progress">
+                    <span id="caught-count">0</span> / <span id="total-count">10</span> AI Models Caught
+                </div>
+                <div id="current-target">Look for: <span id="target-name">GPT-4</span></div>
+                <button id="capture-btn">📸 CAPTURE</button>
+            </div>
+            
+            <div id="ar-container">
+                <video id="camera-feed" autoplay playsinline></video>
+                <canvas id="ar-canvas"></canvas>
+            </div>
+            
+            <div id="inventory-btn">📦 Inventory</div>
+        </div>
+
+        <div id="inventory-page" class="page">
+            <h2>Your Collection</h2>
+            <div id="inventory-grid"></div>
+            <button id="back-to-game">Back to Game</button>
+        </div>
+
+        <div id="success-modal" class="modal">
+            <div class="modal-content">
+                <h3>🎉 Captured!</h3>
+                <p id="capture-message"></p>
+                <button id="continue-btn">Continue</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="game.js"></script>
+</body>
+</html>

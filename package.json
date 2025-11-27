@@ -1,0 +1,16 @@
+{
+    "name": "ai-hunter-game",
+    "version": "1.0.0",
+    "description": "Pokemon GO style AR game for catching AI models",
+    "main": "server.js",
+    "scripts": {
+      "start": "node server.js",
+      "dev": "node server.js"
+    },
+    "dependencies": {
+      "express": "^4.18.2"
+    },
+    "engines": {
+      "node": ">=14.0.0"
+    }
+  }
