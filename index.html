@@ -2,59 +2,121 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Hunter - Catch 'Em All!</title>
-    <link rel="stylesheet" href="styles.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>AI Hunter</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="container">
         <div id="landing-page" class="page active">
-            <h1>🤖 AI Hunter</h1>
-            <p>Catch AI LLMs in Augmented Reality!</p>
+            <div class="logo-container">
+                <div class="logo-icon">
+                    <span class="logo-pulse"></span>
+                    <span class="logo-core"></span>
+                </div>
+                <h1>AI HUNTER</h1>
+                <p class="tagline">Locate. Target. Capture.</p>
+            </div>
             
             <form id="user-form">
                 <div class="form-group">
-                    <label for="name">Your Name:</label>
-                    <input type="text" id="name" required>
+                    <label for="name">HUNTER ID</label>
+                    <input type="text" id="name" placeholder="Enter your name" required>
                 </div>
                 
                 <div class="form-group">
-                    <label for="organization">Organization:</label>
-                    <input type="text" id="organization" required>
+                    <label for="organization">ORGANIZATION</label>
+                    <input type="text" id="organization" placeholder="Enter organization" required>
                 </div>
                 
-                <button type="submit">Start Hunting!</button>
+                <button type="submit" class="start-btn">
+                    <span>INITIALIZE</span>
+                    <span class="btn-arrow"></span>
+                </button>
             </form>
         </div>
 
         <div id="game-page" class="page">
-            <div id="ui-overlay">
-                <div id="progress">
-                    <span id="caught-count">0</span> / <span id="total-count">10</span> AI Models Caught
-                </div>
-                <div id="current-target">Look for: <span id="target-name">GPT-4</span></div>
-                <button id="capture-btn">📸 CAPTURE</button>
-            </div>
-            
             <div id="ar-container">
-                <video id="camera-feed" autoplay playsinline></video>
+                <video id="camera-feed" autoplay playsinline muted></video>
                 <canvas id="ar-canvas"></canvas>
+                
+                <div id="targeting-frame">
+                    <div class="corner tl"></div>
+                    <div class="corner tr"></div>
+                    <div class="corner bl"></div>
+                    <div class="corner br"></div>
+                    <div class="crosshair h"></div>
+                    <div class="crosshair v"></div>
+                </div>
             </div>
-            
-            <div id="inventory-btn">📦 Inventory</div>
+
+            <div id="hud-top">
+                <div id="progress-bar">
+                    <div id="progress-fill"></div>
+                    <span id="progress-text"><span id="caught-count">0</span>/<span id="total-count">10</span></span>
+                </div>
+                <div id="inventory-btn">
+                    <span class="inv-icon"></span>
+                </div>
+            </div>
+
+            <div id="target-indicator" class="hidden">
+                <div class="target-info">
+                    <span class="target-label">TARGET ACQUIRED</span>
+                    <span id="target-name">GPT-4</span>
+                </div>
+            </div>
+
+            <div id="scan-indicator">
+                <div class="scan-text">SCANNING AREA...</div>
+                <div class="scan-hint">Move your device to find AI models</div>
+            </div>
+
+            <div id="capture-container">
+                <button id="capture-btn" disabled>
+                    <span class="capture-ring"></span>
+                    <span class="capture-core"></span>
+                </button>
+                <span id="capture-label">NO TARGET</span>
+            </div>
+
+            <div id="radar">
+                <div class="radar-sweep"></div>
+                <div class="radar-dot" id="radar-dot"></div>
+            </div>
         </div>
 
         <div id="inventory-page" class="page">
-            <h2>Your Collection</h2>
+            <div class="inv-header">
+                <button id="back-to-game" class="back-btn"></button>
+                <h2>COLLECTION</h2>
+                <div class="inv-stats">
+                    <span id="inv-caught">0</span>/<span id="inv-total">10</span>
+                </div>
+            </div>
             <div id="inventory-grid"></div>
-            <button id="back-to-game">Back to Game</button>
         </div>
 
         <div id="success-modal" class="modal">
             <div class="modal-content">
-                <h3>🎉 Captured!</h3>
+                <div class="capture-anim">
+                    <div class="capture-ring-anim"></div>
+                    <div class="capture-icon" id="captured-icon"></div>
+                </div>
+                <h3>CAPTURED</h3>
                 <p id="capture-message"></p>
-                <button id="continue-btn">Continue</button>
+                <button id="continue-btn">CONTINUE</button>
+            </div>
+        </div>
+
+        <div id="complete-modal" class="modal">
+            <div class="modal-content complete">
+                <div class="trophy"></div>
+                <h3>COLLECTION COMPLETE</h3>
+                <p id="complete-message"></p>
+                <button id="view-collection-btn">VIEW COLLECTION</button>
             </div>
         </div>
     </div>
